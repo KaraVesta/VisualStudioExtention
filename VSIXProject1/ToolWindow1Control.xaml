@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="VSIXProject1.ToolWindow1Control"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
+             Background="{DynamicResource {x:Static vsshell:VsBrushes.WindowKey}}"
+             Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="593"
+             Name="MyToolWindow">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Margin="249,10,198,0" Text="Statistic" Foreground="#FF3D77DC" FontSize="36" FontFamily="Ink Free"/>
+            <Button Content="Reload" Click="button1_Click" Height="45" x:Name="button1" FontSize="24" Margin="26,0,0,0" FontFamily="Ink Free" TextOptions.TextHintingMode="Fixed" HorizontalAlignment="Left" Width="123"/>
+            <ListView x:Name="listView" Height="132" VerticalAlignment="Top"  RenderTransformOrigin="0.711,0.529" SelectionChanged="listView_SelectionChanged" IsSynchronizedWithCurrentItem="False" UseLayoutRounding="True" Margin="0,0,10,0">
+                <ListView.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
+                </ListView.Background>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding= "{Binding nameOfFunction}" Header="The name of function" Width="166"/>
+                        <GridViewColumn DisplayMemberBinding= "{Binding numOfKeyWords}" Header="Num of key words" Width="102"/>
+                        <GridViewColumn DisplayMemberBinding= "{Binding numOfLines}" Header="Num of all lines"  Width="87"/>
+                        <GridViewColumn DisplayMemberBinding= "{Binding numOfPureCode}" Header="Num of lines without comments"  Width="175"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</UserControl>
